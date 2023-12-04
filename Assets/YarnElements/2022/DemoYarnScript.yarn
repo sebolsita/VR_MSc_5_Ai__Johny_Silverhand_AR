@@ -1,0 +1,61 @@
+﻿title: ExampleNodeSetup
+---
+
+<<declare $numberExample=150>>
+<<declare $stringExample="This is the string example">>
+<<declare $boolExample=true>>
+
+<<declare $monthsOfUse=0>>
+
+Welcome to this Yarn demo. #line:exampleNodeSetupLine1 
+
+This is an example script. #line:exampleNodeSetupLine2
+
+We hope you enjoy it. #line:exampleNodeSetupLine3
+
+<<jump SecondNode>>
+
+===
+
+title: SecondNode
+---
+
+How long have you used Yarn Spinner for? #line:secondNodeLine1
+
+-> I've never used it!   #line:secondNodeLine2 
+    <<set $monthsOfUse=0>>
+    <<set_cube_colour YarnCommands>>
+    <<jump NeverUsedYarn>>
+
+-> Around 6 months or so.  #line:secondNodeLine3 
+    <<set $monthsOfUse=6>>
+    <<set_cube_colour YarnCommands>>
+    <<jump UsedALittleYarn>>
+
+-> At least a year now.   #line:secondNodeLine4 
+    <<set $monthsOfUse=12>>
+    <<set_cube_colour YarnCommands>>
+    <<jump UsedALotOfYarn>>
+
+===
+
+title: NeverUsedYarn
+---
+
+No problem - we can help you get going!  #line:neverUsedYarnLine1
+
+===
+
+title: UsedALittleYarn
+---
+
+That's great news! Hopefully we can push your knowledge further! #line:usedALittleYarnLine1
+
+===
+
+title: usedALotOfYarn
+---
+
+Wow - You must know a lot then, awesome! #line:usedALotOfYarnLine1
+
+===

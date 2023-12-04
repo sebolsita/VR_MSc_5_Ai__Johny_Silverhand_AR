@@ -1,0 +1,127 @@
+﻿title: Awake
+tag:
+colorID: 0
+position: -222,-222
+---
+
+<<declare $startedScene = true>>
+<<declare $cubeToChange = "" as string>>
+<<declare $colourOfCube = "" as string>>
+<<declare $numberOfNPCs = 0>>
+<<declare $visitedCubeOne = false>>
+<<declare $visitedCubeTwo = false>>
+===
+
+
+title:NPCCube1
+tag:
+colorID: 0
+position: -222,-222
+---
+
+<<Set_Audio_To_NPC_One LipSync>>
+
+<<if $visitedCubeOne is false>>
+
+Hello, I am NPC Cube 1, how do you do chuju? #line:johny_line1
+
+What colour should I be? #line:0b5bf33 
+
+-> Blue? #line:01a5d6a
+    <<set $colourOfCube to "Blue">>
+-> Red? #line:08022d4
+    <<set $colourOfCube to "Red">>
+-> Orange? #line:0211862 
+    <<set $colourOfCube to "Orange">>
+
+<<set $cubeToChange to "1">>
+<<change_cube_colour YarnCommands>>
+
+<<set $visitedCubeOne to true>>
+
+Awesome, I love {$colourOfCube}, thanks! #line:0f534a6 
+
+<<jump EndConversation>>
+
+<<elseif $visitedCubeOne is true>>
+
+Welcome back friend, so glad to see you! #line:0d424d0 
+
+Will you change my colour again? #line:0a201f0 
+
+->Yeah sure! #line:046993f 
+    <<jump ColourChange>>
+->Not this time... #line:0a25788 
+    No worries, I'm happy as I am anyway!   #line:0264e09 
+
+<<endif>>  
+
+===
+
+title:ColourChange
+tag:
+---
+
+-> Blue?  #line:034a5d7 
+    <<set $colourOfCube to "Blue">>
+-> Red? #line:098f73c 
+    <<set $colourOfCube to "Red">>
+-> Orange?  #line:0faaa4d 
+    <<set $colourOfCube to "Orange">>
+
+<<set $cubeToChange to "1">>
+
+<<change_cube_colour YarnCommands>>
+
+<<jump EndConversation>>
+
+===
+
+
+title:NPCCube2
+tag:
+---
+
+<<Set_Audio_To_NPC_Two LipSync>>
+
+
+<<if $visitedCubeTwo is false>>
+
+What do you want? I'm NPC Cube 2 and I don't like strangers!!! #line:NPCCube2_line1
+
+-> Nothing #line:0fe7fbe 
+-> I'm going to make you blue, hahaha! #line:0b6ef1b 
+    <<set $colourOfCube to "Blue">>
+-> Now you're red! #line:055a7ab 
+    <<set $colourOfCube to "Red">>
+-> Orange you glad you met me! #line:0bcbdc7 
+    <<set $colourOfCube to "Orange">>
+
+<<set $cubeToChange to "2">>
+<<change_cube_colour YarnCommands>>
+<<set $visitedCubeTwo to true>>
+Oh no! I hate {$colourOfCube}, why would you do that!! #line:07bbf76 
+<<jump EndConversation>>
+<<else>>
+
+Go away! I'm not letting you near me again! #line:001110c 
+
+<<endif>>
+
+===
+
+title: EndConversation
+tag:
+---
+
+<<if $cubeToChange is "1">>
+    <<Set_Audio_To_NPC_One LipSync>>
+    Thank you so much for changing my colour to {$colourOfCube}, it really is nice. #line:085aee3 
+    I hope to see you again, bye! #line:028719a 
+<<elseif $cubeToChange is "2">>
+    <<Set_Audio_To_NPC_Two LipSync>>
+    {$colourOfCube} really is the worst, I cannot believe you have done this to me.... #line:0a21868 
+    I don't want to see you again, ever!! #line:058ceae 
+<<endif>>
+
+===
