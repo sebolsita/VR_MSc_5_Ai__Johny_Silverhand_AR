@@ -10,6 +10,8 @@ position: -222,-222
 <<declare $numberOfNPCs = 0>>
 <<declare $visitedCubeOne = false>>
 <<declare $visitedCubeTwo = false>>
+
+<<declare $dialogueOption = 0>>
 ===
 
 
@@ -23,16 +25,49 @@ position: -222,-222
 
 <<if $visitedCubeOne is false>>
 
-Hello, I am NPC Cube 1, how do you do chuju? #line:johny_line1
+Hey, choomba! Welcome back to the real world. Feeling that deja vu, huh? You were out cold for a while. Bet you're wondering what hit you. Well, life's full of surprises, ain't it? So, what's the first thing on your mind, V? #line:johny_line1
 
-What colour should I be? #line:0b5bf33 
+-> V: Deja vu or not, just tell me where I am. And make it snappy. #line:01a5d6a
+    <<set $dialogueOption to 1>>
+-> V: Out cold, huh? Feels like I've been run over by a herd of cyber-enhanced elephants. What happened? #line:08022d4
+    <<set $dialogueOption to 2>>
+-> V: Real world, my ass. What kind of messed-up dream was that? Got any answers, Johnny? #line:0211862 
+    <<set $dialogueOption to 3>>
 
--> Blue? #line:01a5d6a
-    <<set $colourOfCube to "Blue">>
--> Red? #line:08022d4
-    <<set $colourOfCube to "Red">>
--> Orange? #line:0211862 
-    <<set $colourOfCube to "Orange">>
+<<if $dialogueOption is 1>>
+Straight to the point, huh? You're in a place where reality and virtuality like to play hide and seek. Trust me, you'll get used to it. Now, buckle up, V. The ride's just getting started. #line:johny_line2_1
+Fine, let's cut through the mysteries. What's our next move, Johnny? #line:player214214
+Next move, huh? First, we gotta figure out what's real and what's just digital noise. There's a city out there, V, and it's itching for a wake-up call. Strap in, get ready to tear through the veil, 'cause Johnny's taking the wheel. #line:johny_line3_1
+<<endif>>
+<<if $dialogueOption is 2>>
+Herd of cyber-enhanced elephants, now that's a vivid image. Long story short, you took a nosedive into the abyss, but here you are, clawing your way back. Ready for round two, V? The city's still spinning, and so are we. #line:johny_line2_2
+In? Out? Feels like I don't have much of a choice here. Lead the way, Silverhand. #line:player124214
+Choice or not, we're stuck in this ride together. Follow my lead, and maybe we'll survive this clusterfuck. Time to show Night City what real chaos looks like, V. #line:johny_line3_2
+<<endif>>
+<<if $dialogueOption is 3>>
+Dream, nightmare, call it what you want. We're stuck in a reality sandwich, and I'm your not-so-friendly guide. As for answers, pal, we're hunting those down together. One revelation at a time. Now, are you in, or are you out? #line:johny_line2_3
+You talk a big game, Johnny. I'm in, but I better get some straight answers soon. #line:player91292
+Straight answers, kid? In this city? Good luck with that. But hey, you're rolling with Johnny Silverhand now. Buckle up, enjoy the chaos, and who knows, maybe you'll get a few answers along the way. #line:johny_line3_3
+<<endif>>
+<<set $dialogueOption to 0>>
+
+-> V: You know what, Johnny? Let's do this. Show me what you got. #line:player523333
+    <<set $dialogueOption to 1>>
+-> V: I need a damn break. Mind if I borrow a cigarette, Johnny? I could use a moment to wrap my head around all this madness. #line:player523412
+    <<set $dialogueOption to 2>>
+-> V: Alright, enough of your cryptic crap, Johnny. Just... fuck off. #line:player523644
+    <<set $dialogueOption to 3>>
+
+<<if $dialogueOption is 1>>
+That's the spirit, V. Time to turn up the volume and set this city ablaze. Get ready for a front-row seat to the chaos. #line:johny_line4_1
+<<endif>>
+<<if $dialogueOption is 2>>
+I need a damn break. Mind if I borrow that cigarette, Johnny? I could use a moment to wrap my head around all this madness #line:johny_line4_2
+<<endif>>
+<<if $dialogueOption is 3>>
+Fine, have it your way. I'll be watching from the shadows, just in case you change your mind #line:johny_line4_3
+<<endif>>
+<<set $dialogueOption to 0>>
 
 <<set $cubeToChange to "1">>
 <<change_cube_colour YarnCommands>>
