@@ -17,7 +17,7 @@ public class NPC3D : MonoBehaviour
     public GameObject dialogueCanvas; //refernce to the canvas
 
     [Header("Dialogue Canvas")]
-    public Vector3 PostionSpeachBubble = new Vector3(0f, 2.0f, 0.0f);
+    public Vector3 PostionSpeachBubble = new Vector3(0.0f, 2.0f, 0.0f);
     private float canvasTurnSpeed = 2;
     private bool canvasActive;
     private GameObject playerGameObject;
@@ -90,10 +90,15 @@ public class NPC3D : MonoBehaviour
             {
                 if (dialogueCanvas != null)
                 {
-                    //move the Canvas to the object and off set
+                    // Adjust the PositionSpeachBubble vector
+                    Vector3 adjustedPosition = PostionSpeachBubble;
+                    adjustedPosition.y -= 0.2f;
+                    // adjustedPosition.z += 0.0f;
+
+                    // Move the Canvas to the object and offset
                     canvasActive = true;
                     dialogueCanvas.transform.SetParent(transform); // use the root to prevent scaling
-                    dialogueCanvas.GetComponent<RectTransform>().anchoredPosition3D = transform.TransformVector(PostionSpeachBubble);
+                    dialogueCanvas.GetComponent<RectTransform>().anchoredPosition3D = transform.TransformVector(adjustedPosition);
                 }
 
                 if (dialogueRunner.IsDialogueRunning)

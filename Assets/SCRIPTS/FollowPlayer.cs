@@ -1,75 +1,45 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowPlayer : MonoBehaviour
+public class NPCFollowPlayer : MonoBehaviour
 {
-    public NavMeshAgent agent2;
-    public Transform player;
+    public string playerTag = "Player";
+    private Transform playerTransform;
+    private NavMeshAgent navMeshAgent;
 
-    private Animator animator;
-
-    private float updateInterval = 1f;
-    private float updateTimer = 0f;
-
-    private void Start()
+    void Start()
     {
-        if (agent2 == null)
+        // Find the player object based on the tag
+        GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+
+        // Check if the player object exists
+        if (player != null)
         {
-            agent2 = GetComponent<NavMeshAgent>();
+            // Get the player's transform component
+            playerTransform = player.transform;
+        }
+        else
+        {
+            Debug.LogError("Player object not found. Make sure the player object is tagged as 'Player'.");
         }
 
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        // Get the NavMeshAgent component attached to this NPC
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
-        if (agent2 == null || player == null)
+        // Check if the NavMeshAgent component exists
+        if (navMeshAgent == null)
         {
-            Debug.LogError("Agent or player not found. Make sure to assign the agent and player in the inspector or have the player tagged.");
-        }
-
-        // Get the Animator component on the agent GameObject
-        animator = GetComponent<Animator>();
-        if (animator == null)
-        {
-            Debug.LogError("Animator component not found. Make sure to attach an Animator component to the agent GameObject.");
+            Debug.LogError("NavMeshAgent component not found on this NPC.");
         }
     }
 
-    private void Update()
+    void Update()
     {
-        if (agent2.enabled == false || player == null)
+        // Check if both playerTransform and navMeshAgent are valid
+        if (playerTransform != null && navMeshAgent != null)
         {
-            return;
+            // Set the destination of the NPC to the player's position
+            navMeshAgent.SetDestination(playerTransform.position);
         }
-
-        // Update the timer
-        updateTimer += Time.deltaTime;
-
-        // Check if it's time to update the destination
-        if (updateTimer >= updateInterval)
-        {
-            // Set the destination to the player's position
-            agent2.SetDestination(player.position);
-
-            // Calculate the speed of the agent based on NavMeshAgent's velocity
-            float speed = agent2.velocity.magnitude;
-
-            // Update the Animator parameters
-            animator.SetFloat("Speed", speed);
-
-            // Rotate the agent to face the player
-            RotateAgentTowardsPlayer();
-
-            // Reset the timer
-            updateTimer = 0f;
-        }
-    }
-
-    private void RotateAgentTowardsPlayer()
-    {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 }
