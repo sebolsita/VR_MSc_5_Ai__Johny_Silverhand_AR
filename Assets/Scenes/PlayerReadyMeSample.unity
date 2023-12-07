@@ -774,6 +774,10 @@ MonoBehaviour:
   blue: {fileID: 2100000, guid: 3cc094d53bd42dd4083a33d5d40b7806, type: 2}
   red: {fileID: 2100000, guid: 523a04b4d1a02764481283b2f0a6756f, type: 2}
   orange: {fileID: 2100000, guid: c94b7f9d30d0e4144aef346e21fd4752, type: 2}
+  npcAnimator: {fileID: 1779914150}
+  guituarObject: {fileID: 0}
+  smokeObject: {fileID: 0}
+  byeObject: {fileID: 0}
 --- !u!1001 &920814244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1503,6 +1507,20 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5245108209394196066, guid: e26750839387d124895d93bef58af172, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3394e5474ca856241b39809f12c204a8, type: 2}
+    - target: {fileID: 5245108209394196066, guid: e26750839387d124895d93bef58af172, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Hips'\n\tTransform 'RightHandMiddle2'\n\tTransform
+        'LeftHandRing2'\n\tTransform 'Spine1'\n\tTransform 'RightHandPinky2'\n\tTransform
+        'Neck'\n\tTransform 'LeftHandThumb1'\n\tTransform 'RightHandThumb3'\n\tTransform
+        'RightForeArm'\n\tTransform 'LeftLeg'\n\tand more ...\n\tFrom animation clip
+        'Smoking'"
+      objectReference: {fileID: 0}
     - target: {fileID: 6034031154235595520, guid: e26750839387d124895d93bef58af172, type: 3}
       propertyPath: m_Name
       value: NPCCube1 (1)
@@ -1553,8 +1571,8 @@ MonoBehaviour:
   characterName: Cube1
   talkToNode: NPCCube1
   scriptToLoad: {fileID: 7545569452688597077, guid: 6169c57d59a0dc1448af9e205167cae6, type: 3}
-  dialogueRunner: {fileID: 0}
-  dialogueCanvas: {fileID: 0}
+  dialogueRunner: {fileID: 920814248}
+  dialogueCanvas: {fileID: 920814246}
   PostionSpeachBubble: {x: 0, y: 2, z: 0}
 --- !u!65 &1779914145
 BoxCollider:
@@ -1589,6 +1607,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d1d5cd39428a444bdb78f0f4d60113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1779914150 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5245108209394196066, guid: e26750839387d124895d93bef58af172, type: 3}
+  m_PrefabInstance: {fileID: 1779914142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1829210524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7825374989609610537, guid: 01f1fd5ec62010a4ca56411ec3f9751c, type: 3}
@@ -1638,6 +1661,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &1829210528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829210524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03be9a71a24ff0a459c7634f0f9c2db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1915640534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,6 +2195,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7825374989609610537, guid: 01f1fd5ec62010a4ca56411ec3f9751c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1829210527}
+    - targetCorrespondingSourceObject: {fileID: 7825374989609610537, guid: 01f1fd5ec62010a4ca56411ec3f9751c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829210528}
   m_SourcePrefab: {fileID: 100100000, guid: 01f1fd5ec62010a4ca56411ec3f9751c, type: 3}
 --- !u!1001 &8964370490744442019
 PrefabInstance:
@@ -2233,6 +2271,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 539047526}
+    - target: {fileID: 5245108209394196066, guid: e26750839387d124895d93bef58af172, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3394e5474ca856241b39809f12c204a8, type: 2}
     - target: {fileID: 6034031154235595520, guid: e26750839387d124895d93bef58af172, type: 3}
       propertyPath: m_Name
       value: NPCCube1

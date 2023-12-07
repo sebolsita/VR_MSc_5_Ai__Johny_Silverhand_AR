@@ -10,6 +10,7 @@ position: -222,-222
 <<declare $numberOfNPCs = 0>>
 <<declare $visitedCubeOne = false>>
 <<declare $visitedCubeTwo = false>>
+<<declare $guitarState = false>>
 
 <<declare $dialogueOption = 0>>
 ===
@@ -60,20 +61,22 @@ Straight answers, kid? In this city? Good luck with that. But hey, you're rollin
 
 <<if $dialogueOption is 1>>
 That's the spirit, V. Time to turn up the volume and set this city ablaze. Get ready for a front-row seat to the chaos. #line:johny_line4_1
+    // Trigger the guitar animation
+<<setGuitarState YarnCommands>>
 <<endif>>
 <<if $dialogueOption is 2>>
 I need a damn break. Mind if I borrow that cigarette, Johnny? I could use a moment to wrap my head around all this madness #line:johny_line4_2
+<<setSmokeState YarnCommands>>
 <<endif>>
 <<if $dialogueOption is 3>>
 Fine, have it your way. I'll be watching from the shadows, just in case you change your mind #line:johny_line4_3
+<<setByeState YarnCommands>>
+<<crowd YarnCommands>>
 <<endif>>
 <<set $dialogueOption to 0>>
-
-<<set $cubeToChange to "1">>
-<<change_cube_colour YarnCommands>>
-
 <<set $visitedCubeOne to true>>
 
+The rest of the demo is not done, template lines incoming #line:232323 
 Awesome, I love {$colourOfCube}, thanks! #line:0f534a6 
 
 <<jump EndConversation>>

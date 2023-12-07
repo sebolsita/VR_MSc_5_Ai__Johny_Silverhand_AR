@@ -16,7 +16,7 @@ public class RandomNavMeshPosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _waitTime = 5f;
+        _waitTime = 1f;
     }
 
     // Update is called once per frame
