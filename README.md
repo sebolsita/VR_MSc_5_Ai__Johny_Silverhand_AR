@@ -9,3 +9,8 @@ Explore a mixed reality environment, engage in dynamic dialogues with Johnny Sil
 ## Demo
 
 https://youtu.be/4gqNRb5YoYY
+
+## Tools Used
+
+- **Voiceover:** Voiceover provided by 11labs.
+- **Models and Animation:** Models and animations created using Mixamo and Player Ready Me.
